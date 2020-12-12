@@ -28,16 +28,16 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`nuxp-cli hello`](#nuxp-cli-hello)
+* [`nuxp-cli new`](#nuxp-cli-new)
 * [`nuxp-cli help [COMMAND]`](#nuxp-cli-help-command)
 
-## `nuxp-cli hello`
+## `nuxp-cli new`
 
 Describe the command here
 
 ```
 USAGE
-  $ nuxp-cli hello
+  $ nuxp-cli new
 
 OPTIONS
   -n, --name=name  name to print
@@ -47,7 +47,45 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/hello.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/hello.js)_
+_See code: [src/commands/new.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/new.js)_
+
+## `nuxp-cli verify [COMMAND]`
+
+display help for nuxp-cli
+
+```
+USAGE
+  $ nuxp-cli verify [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [src/commands/verify](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/verify.js)_
+
+
+
+## `nuxp-cli config [COMMAND]`
+
+display help for nuxp-cli
+
+```
+USAGE
+  $ nuxp-cli config [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [src/commands/config/index](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/config/index.js)_
+
+<!-- commandsstop -->
 
 ## `nuxp-cli help [COMMAND]`
 
