@@ -1,0 +1,65 @@
+{
+  "name": "nuxp-cli",
+  "description": "nuxpresso cli",
+  "version": "0.0.0",
+  "author": "Swina Allen @swina",
+  "bin": {
+    "nuxp-cli": "./bin/run"
+  },
+  "bugs": "https://github.com/swina/nuxp-cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^3",
+    "cwd": "^0.10.0",
+    "execa": "^5.0.0",
+    "listr": "^0.14.3"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "chai": "^4",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "globby": "^10",
+    "mocha": "^5",
+    "nyc": "^14",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/swina/nuxp-cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "nuxp-cli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topics": [{
+      "name": "config",
+      "subtopics" : {
+        "name" : "moka"
+      }
+    }]
+  },
+  "repository": "swina/nuxp-cli",
+  "scripts": {
+    "postpack": "rimraf oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
