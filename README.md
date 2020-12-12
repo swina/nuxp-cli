@@ -8,6 +8,9 @@ nuxpresso cli
 [![Downloads/week](https://img.shields.io/npm/dw/nuxp-cli.svg)](https://npmjs.org/package/nuxp-cli)
 [![License](https://img.shields.io/npm/l/nuxp-cli.svg)](https://github.com/swina/nuxp-cli/blob/master/package.json)
 
+
+**Requirement: YARN**
+
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
@@ -29,61 +32,51 @@ USAGE
 # Commands
 <!-- commands -->
 * [`nuxp-cli new`](#nuxp-cli-new)
+* [`nuxp-cli verify`](#nuxp-cli-verify)
+* [`nuxp-cli config`](#nuxp-cli-config)
 * [`nuxp-cli help [COMMAND]`](#nuxp-cli-help-command)
 
 ## `nuxp-cli new`
 
-Describe the command here
+Clone and install dependencies for nuxpresso.
 
 ```
 USAGE
   $ nuxp-cli new
 
-OPTIONS
-  -n, --name=name  name to print
-
 DESCRIPTION
-  ...
-  Extra documentation goes here
+  Clone nuxpresso-moka, nuxpresso-nuxt and nuxpresso-strapi and install all dependecies
 ```
 
 _See code: [src/commands/new.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/new.js)_
 
 ## `nuxp-cli verify [COMMAND]`
 
-display help for nuxp-cli
+Verify that nuxpresso dependecies have been installed correctly
 
 ```
 USAGE
   $ nuxp-cli verify [COMMAND]
 
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --all  see all commands in CLI
 ```
 
-_See code: [src/commands/verify](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/verify.js)_
+_See code: [src/commands/verify.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/verify.js)_
 
 
 
 ## `nuxp-cli config [COMMAND]`
 
-display help for nuxp-cli
+nuxpresso configuration with environment file creation
 
 ```
 USAGE
   $ nuxp-cli config [COMMAND]
 
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --all  see all commands in CLI
+DESCRIPTION
+  Automate creation of env files based on user input.
 ```
 
-_See code: [src/commands/config/index](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/config/index.js)_
+_See code: [src/commands/config/index.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/config/index.js)_
 
 <!-- commandsstop -->
 
