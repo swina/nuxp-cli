@@ -46,13 +46,7 @@
     "bin": "nuxp-cli",
     "plugins": [
       "@oclif/plugin-help"
-    ],
-    "topics": [{
-      "name": "config",
-      "subtopics" : {
-        "name" : "moka"
-      }
-    }]
+    ]
   },
   "repository": "swina/nuxp-cli",
   "scripts": {

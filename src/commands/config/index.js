@@ -5,25 +5,10 @@ const {Command, flags} = require( '@oclif/command' )
 const {cli} = require( 'cli-ux' )
 const inquirer = require( 'inquirer' )
 const { writeFile } = require('fs')
-var configuration_strapi = [
-    { name: "HOST", label: 'Strapi HOST IP' , type: 'input' , default: '0.0.0.0' },
-    { name: "PORT", label: 'Strapi HOST PORT' , type: 'input' , default: "1338" },
-    { name: "DATABASE_CLIENT", label: 'DATABASE Type' , type: 'list' , default: ["postgres","mysql","sqlite","mongo"] },
-    { name: "DATABASE_HOST" , label: 'DATABASE Host' , type: 'input' , default: '127.0.0.1' },
-    { name: "DATABASE_PORT" , label: 'DATABASE Port' , type: 'input' , default: '5435' },
-    { name: "DATABASE_NAME" , label: 'DATABASE Name' , type: 'input' ,default : "nuxpresso-strapi" },
-    { name: "DATABASE_USERNAME" , label: 'DATABASE Username' , type: 'input' , default: '' },
-    { name: "DATABASE_PASSWORD" , label: 'DATABASE Password' , type: 'password' , default: '' },
-    { name: "DATABASE_SSL" , label: 'DATABASE SSL' , type: 'confirm' , default: false },
-    { name: "CLOUDINARY_API_KEY" , label: 'Cloudinary API KEY' , type: 'input' , default: '' },
-    { name: "CLOUDINARY_API_SECRET" , label: 'Cloudinary API SECRET' , type: 'input' , default: '' },
-    { name: "CLOUDINARY_CLOUD_NAME" , label: 'Cloudinary Cloud Name' , type: 'input' , default: '' },
-    { name: "MAILGUN_API_KEY" , label: 'Mailgun API KEY' , type: 'input' , default: '' },
-    { name: "MAILGUN_DOMAIN" , label: 'Mailgun Domain' , type: 'input' , default: '' },
-    { name: "MAILGUN_FROM" , label: 'Mailgun Email From' , type: 'input' , default: '' },
-    { name: "MAILGUN_REPLYTO" , label: 'Mailgun Reply To' , type: 'input' , default: '' },
-    { name: "SITE_EMAIL" , label: 'SITE Email' , type: 'input' , default: '' }
-]
+const constants = require('../../constants')
+
+const configuration_strapi = constants.configuration_strapi
+
 var current = 0
 var questions = Object.keys(configuration_strapi)
 var configuration = []
@@ -62,36 +47,36 @@ function writeConfig(){
 async function confirmConfig (str){
     let confirmation = await inquirer.prompt([{
         name: 'confirm',
-        message: 'Confirm configuration nuxpresso-strapi?',
+        message: 'Confirm configuration?',
         type: 'list' ,
         choices: [ 'Confirm' , 'Restart' , 'Quit' ]
     }])
     if ( confirmation.confirm === 'Confirm' ){
-        cli.action.start ( 'Writing to env.strapi')
+        cli.action.start ( 'Writing configuration')
         fs.writeFile('nuxpresso-strapi/env', str , function (err,data) {
             if (err) {
                 return console.log(err);
             }
         });
-        let nuxt = 'API_URL=http://localhost:' + port + '/\n'
+        var nuxt = 'API_URL=http://localhost:' + port + '/\n'
 
         fs.writeFile('nuxpresso-nuxt/env' , nuxt  , function (err,data) {
             if (err) {
                 return console.log(err);
             }
         });
-        let moka = 'VUE_APP_API_URL=http://localhost:' + port + '/\n'
+        var moka = 'VUE_APP_API_URL=http://localhost:' + port + '/\n'
         moka += 'VUE_APP_GRAPHQL=http://localhost:'+ port + '/graphql\n'
         fs.writeFile('nuxpresso-moka/env', moka , function (err,data) {
             if (err) {
                 return console.log(err);
             }
         });
-        cli.action.stop ( 'Rename the file to env and copy in the root folder of nuxpresso-strapi' )
+        cli.action.stop ( 'Configuration files created' )
     } 
     if ( confirmation.confirm === 'Restart' ){
         console.clear()
-        console.log ( 'nuxpresso-strapi environment configuration')
+        console.log ( 'nuxpresso environment configuration')
         current = 0
         question(current)
     }
@@ -100,28 +85,21 @@ async function confirmConfig (str){
 
 class ConfigCommand extends Command {
     async run() {
-      const {flags} = this.parse(ConfigCommand)
-      const name = flags.name || 'nuxpresso'
-      if  ( flags.version ) {  return }
       console.clear()
       let responses  = await inquirer.prompt([{
         name: 'install',
-        message: 'Do you want to configure nuxpresso-strapi?',
+        message: 'Do you want to configure nuxpresso (existing configuration will be overwritten)?',
         type: 'confirm'}])
       if ( responses.install ){
           question(current)
       }
     }
-  }
+}
   
-  ConfigCommand.description = `Install NUXPRESSO for Strapi CMS`
-  
-  ConfigCommand.flags = {
-    // add --version flag to show CLI version
-    version: flags.version({char: 'v'}),
-    // add --help flag to show CLI version
+ConfigCommand.description = `NUXPRESSO for Strapi CMS configuration`
+
+ConfigCommand.flags = {
     help: flags.help({char: 'h'}),
-   
-  }
-  
-  module.exports = ConfigCommand
+}
+
+module.exports = ConfigCommand
