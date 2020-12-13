@@ -31,32 +31,35 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`nuxp-cli new`](#nuxp-cli-new)
-* [`nuxp-cli verify`](#nuxp-cli-verify)
+* [`nuxp-cli nuxpresso:new`](#nuxp-cli-new)
+* [`nuxp-cli nuxpresso:verify`](#nuxp-cli-verify)
 * [`nuxp-cli config`](#nuxp-cli-config)
 * [`nuxp-cli help [COMMAND]`](#nuxp-cli-help-command)
 
-## `nuxp-cli new`
+## `nuxp-cli nuxpresso:new [OPTIONS]`
 
 Clone and install dependencies for nuxpresso.
 
 ```
 USAGE
-  $ nuxp-cli new
+  $ nuxp-cli nuxpresso:new
 
+OPTIONS
+  $ nuxp-cli nuxpresso:new [project_name]
+  
 DESCRIPTION
   Clone nuxpresso-moka, nuxpresso-nuxt and nuxpresso-strapi and install all dependecies
 ```
 
 _See code: [src/commands/new.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/new.js)_
 
-## `nuxp-cli verify [COMMAND]`
+## `nuxp-cli nuxpresso:verify`
 
 Verify that nuxpresso dependecies have been installed correctly
 
 ```
 USAGE
-  $ nuxp-cli verify [COMMAND]
+  $ nuxp-cli nuxpresso:verify
 
 ```
 
