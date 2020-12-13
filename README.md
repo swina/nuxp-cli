@@ -31,57 +31,24 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`nuxp-cli nuxpresso:new`](#nuxp-cli-new)
-* [`nuxp-cli nuxpresso:verify`](#nuxp-cli-verify)
 * [`nuxp-cli config`](#nuxp-cli-config)
 * [`nuxp-cli help [COMMAND]`](#nuxp-cli-help-command)
+* [`nuxp-cli nuxpresso:new`](#nuxp-cli-nuxpressonew)
+* [`nuxp-cli nuxpresso:verify`](#nuxp-cli-nuxpressoverify)
 
-## `nuxp-cli nuxpresso:new [OPTIONS]`
+## `nuxp-cli config`
 
-Clone and install dependencies for nuxpresso.
+NUXPRESSO for Strapi CMS configuration
 
 ```
 USAGE
-  $ nuxp-cli nuxpresso:new
+  $ nuxp-cli config
 
 OPTIONS
-  $ nuxp-cli nuxpresso:new [project_name]
-  
-DESCRIPTION
-  Clone nuxpresso-moka, nuxpresso-nuxt and nuxpresso-strapi and install all dependecies
-```
-
-_See code: [src/commands/new.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/new.js)_
-
-## `nuxp-cli nuxpresso:verify`
-
-Verify that nuxpresso dependecies have been installed correctly
-
-```
-USAGE
-  $ nuxp-cli nuxpresso:verify
-
-```
-
-_See code: [src/commands/verify.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/verify.js)_
-
-
-
-## `nuxp-cli config [COMMAND]`
-
-nuxpresso configuration with environment file creation
-
-```
-USAGE
-  $ nuxp-cli config [COMMAND]
-
-DESCRIPTION
-  Automate creation of env files based on user input.
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/config/index.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/config/index.js)_
-
-<!-- commandsstop -->
 
 ## `nuxp-cli help [COMMAND]`
 
@@ -99,4 +66,33 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
+
+## `nuxp-cli nuxpresso:new`
+
+Clone NUXPRESSO for Strapi CMS repos and install dependencies
+
+```
+USAGE
+  $ nuxp-cli nuxpresso:new
+
+OPTIONS
+  -h, --help       show CLI help
+  -n, --name=name  destination folder
+```
+
+_See code: [src/commands/nuxpresso/new.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/nuxpresso/new.js)_
+
+## `nuxp-cli nuxpresso:verify`
+
+Verifies that versions of the package dependencies
+
+```
+USAGE
+  $ nuxp-cli nuxpresso:verify
+
+OPTIONS
+  -h, --help  show CLI help
+```
+
+_See code: [src/commands/nuxpresso/verify.js](https://github.com/swina/nuxp-cli/blob/v0.0.0/src/commands/nuxpresso/verify.js)_
 <!-- commandsstop -->
