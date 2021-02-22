@@ -53,25 +53,26 @@ async function confirmConfig (str){
     }])
     if ( confirmation.confirm === 'Confirm' ){
         cli.action.start ( 'Writing configuration')
-        fs.writeFile('nuxpresso-strapi/env', str , function (err,data) {
+        fs.writeFile('nuxpresso-strapi/.env', str , function (err,data) {
             if (err) {
                 return console.log(err);
             }
         });
         var nuxt = 'API_URL=http://localhost:' + port + '/\n'
 
-        fs.writeFile('nuxpresso-nuxt/env' , nuxt  , function (err,data) {
+        fs.writeFile('nuxpresso-nuxt/.env' , nuxt  , function (err,data) {
             if (err) {
                 return console.log(err);
             }
         });
         var moka = 'VUE_APP_API_URL=http://localhost:' + port + '/\n'
         moka += 'VUE_APP_GRAPHQL=http://localhost:'+ port + '/graphql\n'
-        fs.writeFile('nuxpresso-moka/env', moka , function (err,data) {
+        fs.writeFile('nuxpresso-moka/.env', moka , function (err,data) {
             if (err) {
                 return console.log(err);
             }
         });
+        
         cli.action.stop ( 'Configuration files created' )
     } 
     if ( confirmation.confirm === 'Restart' ){
